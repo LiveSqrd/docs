@@ -11,3 +11,4 @@ Create a new Project
   * select push events
 7. enter the ssh git repo info in the create form
 8. Hit Create
+9. Visit dev-(:projectname).lsq.io
