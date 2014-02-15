@@ -1,7 +1,9 @@
 Create a new Project
 ===
 
-1. Click + on admin panel after logining 
+1. Go to https://dev-admin.lsq.io
+2. Have a github account
+3. Click + on admin panel after logging 
 2. Enter a project name will be the subdomain 
 3. Put a password for databases
 4. Make a new github repo
