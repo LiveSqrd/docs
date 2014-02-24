@@ -1,4 +1,3 @@
-
 #### The collection is the data collection name (string) :
 * [item](#item)
 * [instance](#instance)
@@ -6,10 +5,11 @@
 * [profile](#profile)
 * [role](#role)
 * [loader](#loader)
+* [level](#level)
 * [grid](#grid)
 * [blob](#blob)
-* [level](#level)
 * [event](#event)
+* [command](#command)
 * [report](#report)
 
 
@@ -582,10 +582,10 @@ Schemas
 ```
 
 
-##grid 
+#Grid 
 
 ```
-"grid": {
+	"grid": {
 		"states": {
 			"type": "Schema.Types.Mixed",
 			"hidden": true
@@ -723,7 +723,7 @@ Schemas
 	},
 ```
 
-##Commands
+##Command
 ```
 	"command": {
 		"states": {
