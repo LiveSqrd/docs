@@ -536,7 +536,7 @@ Schemas
 ```
 
 ##Level
-```
+```json
 	"level": {
 		"states": {
 			"type": "Schema.Types.Mixed",
@@ -578,13 +578,13 @@ Schemas
 				}
 			}
 		]
-	},
+	}
 ```
 
 
 #Grid 
 
-```
+```json
 	"grid": {
 		"states": {
 			"type": "Schema.Types.Mixed",
@@ -631,7 +631,7 @@ Schemas
 ```
 
 ##Blob
-```
+```json
 	"blob": {
 		"states": {
 			"type": "Schema.Types.Mixed",
@@ -649,7 +649,7 @@ Schemas
 	}
 ```
 ##Event
-```
+```json
 	"event": {
 		"states": {
 			"type": "Schema.Types.Mixed",
@@ -720,11 +720,11 @@ Schemas
 		"data": {
 			"type": "Schema.Types.Mixed"
 		}
-	},
+	}
 ```
 
 ##Command
-```
+```json
 	"command": {
 		"states": {
 			"type": "Schema.Types.Mixed",
@@ -773,7 +773,7 @@ Schemas
 ```
 
 ##Report 
-```
+```json
 	"report": {
 		"states": {
 			"type": "Schema.Types.Mixed",
