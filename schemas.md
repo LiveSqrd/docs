@@ -1,5 +1,120 @@
+
+#### The collection is the data collection name (string) :
+* [item](#item)
+* [instance](#instance)
+* [client](#client)
+* [profile](#profile)
+* [role](#role)
+* [loader](#loader)
+* [grid](#grid)
+* [blob](#blob)
+* [level](#level)
+* [event](#event)
+* [report](#report)
+
+
 Schemas
 ========================
+
+##Item
+```json
+
+	"item": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"path": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true
+		},
+		"title": {
+			"type": "String",
+			"default": ""
+		},
+		"photo": {
+			"type": "String"
+		},
+		"body": {
+			"type": "Schema.Types.Mixed"
+		},
+		"group": {
+			"type": "String",
+			"default": "",
+			"lowercase": true,
+			"trim": true
+		},
+		"x": {
+			"type": "Number"
+		},
+		"y": {
+			"type": "Number"
+		},
+		"z": {
+			"type": "Number"
+		},
+		"width": {
+			"type": "Number"
+		},
+		"height": {
+			"type": "Number"
+		},
+		"color": {
+			"type": "String"
+		},
+		"role":{
+			"type": "Schema.Types.ObjectId",
+			"ref": "role"
+		},
+		"permisson": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "profile"
+				},
+				"role": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "role"
+				}
+			}
+		],
+		"item": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "item"
+		},
+		"lock": {
+			"type": "Schema.Types.Mixed"
+		},
+		"date": {
+			"type": "Date"
+		},
+		"geo": { 
+			"type": "[Number]", 
+			"index": "2dsphere",
+			 "sparse": true 
+		},
+		"box":{
+			"type": "[Number]", 
+			"index": "2d",
+			 "sparse": true 
+		},
+		"due": {
+			"date": {
+				"type": "Date"
+			},
+			"period": {
+				"type": "Number"
+			},
+			"freq": {
+				"type": "Number"
+			}
+		},
+		"tags":{"type":"[String]"}
+	}
+```
+
+
 ## Instance
 * Short life span, public user client identification information
 * Created and destroyed with Socket.io events
@@ -419,10 +534,58 @@ Schemas
 	}
 	
 ```
-##Item
-```json
 
-	"item": {
+##Level
+```
+	"level": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"path": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true
+		},
+		"body": {
+			"type": "Schema.Types.Mixed"
+		},
+		"profile": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "profile"
+		},
+		"level": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "level"
+		},
+		"role": {
+			"type": "Schema.Types.ObjectId"
+		},
+		"group": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true
+		},
+		"permission": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "profile"
+				},
+				"role": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "role"
+				}
+			}
+		]
+	},
+```
+
+
+##grid 
+
+```
+"grid": {
 		"states": {
 			"type": "Schema.Types.Mixed",
 			"hidden": true
@@ -436,11 +599,61 @@ Schemas
 			"type": "String",
 			"default": ""
 		},
-		"photo": {
-			"type": "String"
+		"width": {
+			"type": "Number",
+			"default": 0
+		},
+		"height": {
+			"type": "Number",
+			"default": 0
+		},
+		"item": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "item"
+				},
+				"col": {
+					"type": "Number"
+				},
+				"size_x": {
+					"type": "Number"
+				},
+				"size_y": {
+					"type": "Number"
+				},
+				"row": {
+					"type": "Number"
+				}
+			}
+		]
+	}
+```
+
+##Blob
+```
+	"blob": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
 		},
 		"body": {
 			"type": "Schema.Types.Mixed"
+		},
+		"group": {
+			"type": "String"
+		},
+		"date": {
+			"type": "Date"
+		}
+	}
+```
+##Event
+```
+	"event": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
 		},
 		"group": {
 			"type": "String",
@@ -448,72 +661,146 @@ Schemas
 			"lowercase": true,
 			"trim": true
 		},
-		"x": {
-			"type": "Number"
+		"action": {
+			"type": "String",
+			"default": "",
+			"lowercase": true,
+			"trim": true
 		},
-		"y": {
-			"type": "Number"
-		},
-		"z": {
-			"type": "Number"
-		},
-		"width": {
-			"type": "Number"
-		},
-		"height": {
-			"type": "Number"
-		},
-		"color": {
-			"type": "String"
-		},
-		"role":{
-			"type": "Schema.Types.ObjectId",
-			"ref": "role"
-		},
-		"permisson": [
-			{
-				"id": {
-					"type": "Schema.Types.ObjectId",
-					"ref": "profile"
-				},
-				"role": {
-					"type": "Schema.Types.ObjectId",
-					"ref": "role"
-				}
-			}
-		],
-		"item": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "item"
-		},
-		"lock": {
-			"type": "Schema.Types.Mixed"
+		"path": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true
 		},
 		"date": {
 			"type": "Date"
 		},
-		"geo": { 
-			"type": "[Number]", 
-			"index": "2dsphere",
-			 "sparse": true 
+		"instance": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "instance"
 		},
-		"box":{
-			"type": "[Number]", 
-			"index": "2d",
-			 "sparse": true 
+		"client": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "client"
 		},
-		"due": {
+		"profile": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "profile"
+		},
+		"level": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "level"
+		},
+		"item": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "item"
+		},
+		"loader": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "loader"
+		},
+		"event": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "event"
+		},
+		"reciver": [
+			{"profile":{
+				"type": "Schema.Types.ObjectId",
+				"ref": "profile"},
+			"seen":{"type": "Date"}
+			}
+		],
+		"message": {
+			"type": "String"
+		},
+		"done": {
+			"type": "Boolean",
+			"default": false
+		},
+		"data": {
+			"type": "Schema.Types.Mixed"
+		}
+	},
+```
+
+##Commands
+```
+	"command": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"refresh": {
+			"id": {
+				"type": "Schema.Types.ObjectId",
+				"ref": "profile"
+			},
+			"date": {
+				"type": "Date"
+			}
+		},
+		"command": {
+			"id": {
+				"type": "Schema.Types.ObjectId",
+				"ref": "profile"
+			},
 			"date": {
 				"type": "Date"
 			},
-			"period": {
-				"type": "Number"
+			"data": {
+				"type": "String"
 			},
-			"freq": {
+			"time": {
 				"type": "Number"
 			}
 		},
-		"tags":{"type":"[String]"}
+		"publishSite": {
+			"id": {
+				"type": "Schema.Types.ObjectId",
+				"ref": "profile"
+			},
+			"date": {
+				"type": "Date"
+			},
+			"data": {
+				"type": "Number"
+			},
+			"message": {
+				"type": "String"
+			}
+		}
+	}
+```
+
+##Report 
+```
+	"report": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"date": {
+			"type": "Date"
+		},
+		"totals": [
+			{
+				"name": {
+					"type": "String"
+				},
+				"total": {
+					"type": "Number"
+				},
+				"removed": {
+					"type": "Schema.Types.Mixed"
+				}
+			}
+		],
+		"errs": {
+			"type": "Schema.Types.Mixed"
+		},
+		"message": {
+			"type": "String"
+		}
 	}
 ```
 
