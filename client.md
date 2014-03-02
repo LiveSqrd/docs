@@ -131,7 +131,7 @@ Once the fetch is performed on the items we can now iterate through them using e
             });
 
         }
-        , data: {"group":"startup"}        
+        , data: {"group":"startup"} ,{"limit":1,"select":{"body.founders":0},"skip":2,"sort":{"title":1}}       
     });
 ```
 
