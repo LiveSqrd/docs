@@ -2,6 +2,22 @@ items collection
 ===
 ##Fetch In Backbone w/ extras
 
+
+```json 
+ //example object 
+ 
+ {"_id":146378461237849126213
+,"title":"South Beach"
+,"path":"south_beach"
+,"body":{
+         "city":"Miami"
+        ,"state":"fl"
+        ,"contact":"John Smith"
+        ,"email":"john.smith@example.com"
+    }
+}
+
+```
 ###options
 Options
 ---
