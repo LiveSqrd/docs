@@ -49,6 +49,38 @@ Limits the number of results
 ```
 "limit":10
 ```
+###Create/Update
+Create a new item or update an existing one by specifiying _id in query
+```
+{
+  "data":
+  {"token" : "123456"
+    , "request" : "update"
+    ,"query":{
+      "_id": "531438bfdff0e4fe250000a4"
+    },"model": {
+      "title":"South Beach"
+      ,"body":{
+        "city":"Miami"
+      }
+    }
+  }
+}
+```
+```
+{
+  "data":
+  {"token" : "123456"
+    , "request" : "create"
+    "model": {
+      "title":"South Beach"
+      ,"body":{
+        "city":"Miami"
+      }
+    }
+  }
+}
+```
 
 
 ###Skip
