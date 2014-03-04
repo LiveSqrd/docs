@@ -35,22 +35,38 @@ Requests
 * Delete
 * Count
 
-Options
----
-* limit (number)
-* skip (number)
-* sort (object)
-* select (object)
-* show (boolean)
-
-###Limit
-
-Limits the number of results
+###Create
+Create a new item
 ```
-"limit":10
+{
+  "data":
+  {"token" : "123456"
+    , "request" : "create"
+    ,"model": {
+      "title":"South Beach"
+      ,"body":{
+        "city":"Miami"
+      }
+    }
+  }
+}
 ```
-###Create/Update
-Create a new item or update an existing one by specifiying _id in query
+###Read
+Get the objects
+```
+{
+  "data":
+  {"token" : "123456"
+    , "request" : "read"
+    ,"query":{
+      ,"body.city":"Miami"
+    }
+  }
+}
+```
+
+###Update
+Update an existing one by specifiying _id in query
 ```
 {
   "data":
@@ -58,7 +74,8 @@ Create a new item or update an existing one by specifiying _id in query
     , "request" : "update"
     ,"query":{
       "_id": "531438bfdff0e4fe250000a4"
-    },"model": {
+    }
+    ,"model": {
       "title":"South Beach"
       ,"body":{
         "city":"Miami"
@@ -67,19 +84,50 @@ Create a new item or update an existing one by specifiying _id in query
   }
 }
 ```
+
+###Delete
+Delete by query or id 
 ```
 {
   "data":
   {"token" : "123456"
-    , "request" : "create"
-    "model": {
-      "title":"South Beach"
-      ,"body":{
-        "city":"Miami"
-      }
+    , "request" : "delete"
+    ,"query":{
+      "_id": "531438bfdff0e4fe250000a4"
     }
   }
 }
+```
+
+###Count
+Get the number of objects
+```
+{
+  "data":
+  {"token" : "123456"
+    , "request" : "count"
+    ,"query":{
+      ,"body.city":"Miami"
+    }
+  }
+}
+```
+
+Options 
+---
+* limit (number)
+* skip (number)
+* sort (object)
+* select (object)
+* show (boolean)
+* send (boolean)
+all are optional 
+
+###Limit
+
+Limits the number of results
+```
+"limit":10
 ```
 
 
