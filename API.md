@@ -225,11 +225,18 @@ when you do a multi delete or update (without using id) the result will only be 
 
 Types of Schemas
 ---
-* instance
-* client
-* profile
-* item
-* loader
+* [item](#item)
+* [instance](#instance)
+* [client](#client)
+* [profile](#profile)
+* [role](#role)
+* [loader](#loader)
+* [level](#level)
+* [grid](#grid)
+* [blob](#blob)
+* [event](#event)
+* [command](#command)
+* [report](#report)
 
 
 ====
