@@ -433,7 +433,7 @@ Schemas
 
 
 ```json
-	"loader": {
+		"loader": {
 		"states": {
 			"type": "Schema.Types.Mixed",
 			"hidden": true
@@ -441,19 +441,18 @@ Schemas
 		"path": {
 			"type": "String",
 			"lowercase": true,
-			"trim": true
+			"trim": true,
+			"unique":true
 		},
 		"title": {
-			"type": "String",
-			"required": true
+			"type": "String"
 		},
 		"photo": {
 			"type": "String"
 		},
 		"level": {
 			"type": "Schema.Types.ObjectId",
-			"ref": "level",
-			"required": true
+			"ref": "level"
 		},
 		"publish": {
 			"type": "Boolean",
@@ -478,48 +477,24 @@ Schemas
 				"type": "String"
 				}
 		}],
-		"time": {
-			"now": {
-				"type": "Number",
-				"default": 0
-			},
-			"jump": {
-				"type": "Number",
-				"default": 0
-			},
-			"nextTime": {
-				"type": "Number",
-				"default": 1
-			},
-			"gotoTime": {
-				"type": "Number",
-				"default": -2
-			},
-			"cutTime": [
-				{
-					"time": {
-						"type": "Number"
-					},
-					"duration": {
-						"type": "Number"
-					}
-				}
-			],
-			"tags":{"type":"[String]"}
-		},
 		"loader": {
 			"type": "Schema.Types.ObjectId",
 			"ref": "loader"
 		},
 		"role": {
-			"type": "Schema.Types.ObjectId"
+			"type": "Schema.Types.ObjectId",
+			"ref": "role"
 		},
 		"group": {
 			"type": "String",
 			"lowercase": true,
 			"trim": true
+		},"geo": { 
+			"type": "[Number]", 
+			"index": "2dsphere",
+			 "sparse": true 
 		},
-		"permisson": [
+		"permission": [
 			{
 				"id": {
 					"type": "Schema.Types.ObjectId",
@@ -530,7 +505,8 @@ Schemas
 					"ref": "role"
 				}
 			}
-		]
+		],
+		"tags":{"type":"[String]"}
 	}
 	
 ```
