@@ -284,7 +284,7 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"
     limit = 20;
     query = @"\"_id\":\"146378461237849126213\"";
     request = @"read";
-    type = 
+    type = @"POST";
     data = [NSString stringWithFormat:@"data={\"token\":\"%@\",\"request\":\"%@\",\"query\":{%@},\"limit\":%d,\"skip\":%d}", token, request,query, limit, skip];
 
     NSURL* url = [[NSURL alloc] initWithString:urlString];
