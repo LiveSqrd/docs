@@ -1,4 +1,4 @@
-[<-](https://github.com/LiveSqrd/docs)
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
 
 #PostMan setup 
 
@@ -227,21 +227,23 @@ when you do a multi delete or update (without using id) the result will only be 
 
 Types of Schemas
 ---
-* [item](#item)
-* [instance](#instance)
-* [client](#client)
-* [profile](#profile)
-* [role](#role)
-* [loader](#loader)
-* [level](#level)
-* [grid](#grid)
-* [blob](#blob)
-* [event](#event)
-* [command](#command)
-* [report](#report)
+* [item](https://github.com/LiveSqrd/docs/edit/master/schemas.md#item)
+* [instance](https://github.com/LiveSqrd/docs/edit/master/schemas.md#instance)
+* [client](https://github.com/LiveSqrd/docs/edit/master/schemas.md#client)
+* [profile](https://github.com/LiveSqrd/docs/edit/master/schemas.md#profile)
+* [role](https://github.com/LiveSqrd/docs/edit/master/schemas.md#role)
+* [loader](https://github.com/LiveSqrd/docs/edit/master/schemas.md#loader)
+* [level](https://github.com/LiveSqrd/docs/edit/master/schemas.md#level)
+* [grid](https://github.com/LiveSqrd/docs/edit/master/schemas.md#grid)
+* [blob](https://github.com/LiveSqrd/docs/edit/master/schemas.md#blob)
+* [event](https://github.com/LiveSqrd/docs/edit/master/schemas.md#event)
+* [command](https://github.com/LiveSqrd/docs/edit/master/schemas.md#command)
+* [report](https://github.com/LiveSqrd/docs/edit/master/schemas.md#report)
 
 
 ====
 
 #CURL
 
+
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
