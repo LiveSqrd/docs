@@ -1,3 +1,5 @@
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
+
 #### The collection is the data collection name (string) :
 * [item](#item)
 * [instance](#instance)
@@ -782,4 +784,4 @@ Schemas
 
 
 
-
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
