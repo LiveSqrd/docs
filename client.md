@@ -1,3 +1,5 @@
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
+
 items collection
 ===
 ##Fetch In Backbone w/ extras
@@ -161,3 +163,5 @@ In this Example the item is populated from input fields in the View.
         }
     );
 ```
+
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
