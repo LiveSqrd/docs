@@ -31,11 +31,13 @@ Raw data set as JSON
 
 Requests
 ---
-* Create
-* Read
-* Update
-* Delete
-* Count
+* [Create](#create)
+* [Read](#read)
+* [Update](#update)
+* [Delete](#delete)
+* [Count](#count)
+
+[options](#options)
 
 ###Create
 Create a new item
@@ -117,12 +119,13 @@ Get the number of objects
 
 Options 
 ---
-* limit (number)
-* skip (number)
-* sort (object)
-* select (object)
-* show (boolean)
-* send (boolean)
+* [limit](#limit) (number)
+* [skip](#skip) (number)
+* [sort](#sort) (object)
+* [select](#select) (object)
+* [show](#show) (boolean)
+* [send](#send) (boolean)
+* [total](#total) (boolean)
 all are optional 
 
 ###Limit
@@ -224,6 +227,31 @@ when you do a multi delete or update (without using id) the result will only be 
 {"results":[1]
 }
 ```
+### Total
+***expects a boolean (true/false) default false***
+Show the total number of objects for the query reguardless of the limit of results. This can be used for pagenation to know the end of possible results.
+
+```
+//query
+ "total":true
+
+//result
+{ "total":123
+  ,"limit":1
+  ,"length":1
+  ,"results":[
+    {"_id":146378461237849126213
+    ,"title":"South Beach"
+    ,"path":"south_beach"
+    ,"body":{
+             "city":"Miami"
+            ,"state":"fl"
+            ,"contact":"John Smith"
+            ,"email":"john.smith@gmail.com"
+        }
+    }]
+}
+```
 
 Types of Schemas
 ---
@@ -244,6 +272,9 @@ Types of Schemas
 ====
 
 #CURL
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"data":{"token" : "123456", "request" : "delete","query": {},"select":{},"show":true}}' https://dev-voting.lsq.io/api/v1/item
+
 
 
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
