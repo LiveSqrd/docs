@@ -275,6 +275,26 @@ Types of Schemas
 
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"data":{"token" : "123456", "request" : "delete","query": {},"select":{},"show":true}}' https://dev-voting.lsq.io/api/v1/item
 
+====
 
+#IOS 
+```
+    urlString = @"https://dev-voting.lsq.io/api/v1/item";
+    skip = 0;
+    limit = 20;
+    query = @"\"_id\":\"146378461237849126213\"";
+    request = @"read";
+    type = 
+    data = [NSString stringWithFormat:@"data={\"token\":\"%@\",\"request\":\"%@\",\"query\":{%@},\"limit\":%d,\"skip\":%d}", token, request,query, limit, skip];
+
+    NSURL* url = [[NSURL alloc] initWithString:urlString];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPBody:data];
+    request.HTTPMethod = type;
+    [request setURL:url];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+    
+```
 
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
