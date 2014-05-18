@@ -1,6 +1,6 @@
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
 
-#### The collection is the data collection name (string) :
+#Collections:
 * [item](#item)
 * [instance](#instance)
 * [client](#client)
@@ -11,9 +11,11 @@
 * [grid](#grid)
 * [blob](#blob)
 * [event](#event)
+* [media](#media)
 * [command](#command)
 * [report](#report)
 
+[^](#collections)
 
 Schemas
 ========================
@@ -47,29 +49,21 @@ Schemas
 			"lowercase": true,
 			"trim": true
 		},
-		"x": {
-			"type": "Number"
-		},
-		"y": {
-			"type": "Number"
-		},
-		"z": {
-			"type": "Number"
-		},
-		"width": {
-			"type": "Number"
-		},
-		"height": {
-			"type": "Number"
-		},
-		"color": {
-			"type": "String"
-		},
 		"role":{
 			"type": "Schema.Types.ObjectId",
 			"ref": "role"
 		},
-		"permisson": [
+		"media": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "media"
+				},
+				"group":"String",
+				"extra":"Schema.Types.Mixed"
+			}
+		],
+		"permission": [
 			{
 				"id": {
 					"type": "Schema.Types.ObjectId",
@@ -78,7 +72,8 @@ Schemas
 				"role": {
 					"type": "Schema.Types.ObjectId",
 					"ref": "role"
-				}
+				},
+				"extra":"Schema.Types.Mixed"
 			}
 		],
 		"item": {
@@ -91,38 +86,103 @@ Schemas
 		"date": {
 			"type": "Date"
 		},
-		"geo": { 
-			"type": "[Number]", 
-			"index": "2dsphere",
-			 "sparse": true 
+		"publish":{
+			"type": "Boolean"
 		},
 		"box":{
-			"type": "[Number]", 
+			"type": "Schema.Types.Mixed", 
 			"index": "2d",
 			 "sparse": true 
 		},
-		"due": {
-			"date": {
-				"type": "Date"
-			},
-			"period": {
-				"type": "Number"
-			},
-			"freq": {
-				"type": "Number"
-			}
+		"geo": { 
+			"type": "Schema.Types.Mixed", 
+			"index": "2dsphere",
+			 "sparse": true 
 		},
 		"tags":{"type":"[String]"}
 	}
 ```
-
+[^](#collections)
 
 ## Instance
 * Short life span, public user client identification information
 * Created and destroyed with Socket.io events
 * Output
+```json
+	"instance": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"body": {
+			"type": "Schema.Types.Mixed"		
+		},
+		"group":{
+			"type": "String"
+		},
+		"device": {
+			"type": "String"
+		},
+		"browser": {
+			"type": "String"
+		},
+		"touch":{
+			"type": "Boolean"
+		},
+		"version": {
+			"type": "String"
+		},
+		"deviceType": {
+			"type": "String"
+		},
+		"os": {
+			"type": "String"
+		},
+		"osVersion": {
+			"type": "String"
+		},
+		"width": {
+			"type": "Number",
+			"default": 1024
+		},
+		"height": {
+			"type": "Number",
+			"default": 768
+		},
+		"client": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "client"
+		},
+		"profile": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "profile"
+		},
+		"page": {
+			"type": "String"
+		},
+		"layout": {
+			"type": "String"
+		},
+		"media": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "media"
+				},
+				"group":"String",
+				"extra":"Schema.Types.Mixed"
+			}
+		],
+		"date": {
+			"type": "Date",
+			"expires": "24h"
+		}
+	}
+```
+* Example Usage
 
 ```json
+
     {
         "touch": false,
         "date": "2013-07-12T20:11:13.598Z",
@@ -155,13 +215,116 @@ Schemas
 		"noresults": 11
 	}
 ```
+[^](#collections)
 
 ##Client
-
 * Session based storage and identification, used for user login, credentials, and other pertaining parameters
 * Session based entails anonymous and profile attached logins. Unlike [Instances](#instance) they have a long life span: 30 days (subject to change)
 
 * Output
+
+```json
+	"client": {
+		"states": {
+			"type": "Schema.Types.Mixed",
+			"hidden": true
+		},
+		"path": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true,
+			"unique": true
+		},
+		"ip": 
+			{
+				"type": "[String]"
+			}
+		,
+		"login": [
+			{
+				"name": {
+					"type": "String"
+				},
+				"id": {
+					"type": "String"
+				},
+				"data": {
+					"type": "Schema.Types.Mixed"
+				}
+			}
+		],
+		"email": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true,
+			"unique": true
+		},
+		"v": [
+			{
+				"name": {
+					"type": "String"
+				},
+				"v": {
+					"type": "Boolean",
+					"required": true,
+					"default": false
+				}
+			}
+		],
+		"page": {
+			"type": "String"
+		},
+		"date": {
+			"type": "Date"
+		},
+
+		"lang": {
+			"type": "String",
+			"default": "en"
+		},
+		"a": {
+			"type": "String",
+			"required": true,
+			"unique": true
+		},
+		"birthday": {
+			"type": "Date"
+		},
+		"timezone":{
+			"type":"Number"
+		},
+		"gender": {
+			"type": "String"
+		},
+		"photo": {
+			"type": "String"
+		},
+		"profile": {
+			"type": "Schema.Types.ObjectId",
+			"ref": "profile"
+		},
+		"ver": {
+			"type": "Boolean",
+			"default": false
+		},
+		"media": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "media"
+				},
+				"group":"String",
+				"extra":"Schema.Types.Mixed"
+			}
+		],
+		"event": 
+			{
+				"type": "[Schema.Types.ObjectId]",
+				"ref": "event"
+			}
+	}
+```
+* Example Usage
 
 ```json
 	{            
@@ -204,13 +367,14 @@ Schemas
 		"errors":11
 	}
 ```
+[^](#collections)
 
 ##Profile
 *Used for user profiles, levels (groups, collaborations, companies, teams)
 
 
 ```json
-	{
+	"profile": {
 		"states": {
 			"type": "Schema.Types.Mixed",
 			"hidden": true
@@ -263,21 +427,23 @@ Schemas
 		"timezone":{
 			"type":"Number"
 		},
+		"media": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "media"
+				},
+				"group":"String",
+				"extra":"Schema.Types.Mixed"
+			}
+		],
 		"profile": [
 			{
 				"id": {
 					"type": "Schema.Types.ObjectId",
 					"ref": "profile"
 				},
-				"title": {
-					"type": "String"
-				},
-				"start": {
-					"type": "Date"
-				},
-				"end": {
-					"type": "Date"
-				}
+				"extra":"Schema.Types.Mixed"
 			}
 		]
 	}
@@ -314,13 +480,12 @@ Schemas
     }
 	
 ```
+[^](#collections)
 
 ##Role
-* Use to define rights, such as create, delete, update, read, add, remove, edit, destroy, master etc. 
+* Use to define rights, such as create, delete, update, read, master etc. 
 * CRUD (Create Read Update Delete): for the current item.
 * The defined role permission set is applied to different Objects such as [Levels](#level), [Loaders](#loader), [Items](#item)
-
-
 
 
 ```json
@@ -340,40 +505,43 @@ Schemas
 			"required": true
 		},
 		"create": {
-			"type": "Number",
-			"default": 0
+			"type": "String"
 		},
 		"delete": {
-			"type": "Number",
-			"default": 0
+			"type": "String"
 		},
 		"update": {
-			"type": "Number",
-			"default": 0
+			"type": "String"
 		},
 		"read": {
-			"type": "Number",
-			"default": 0
+			"type": "String"
 		},
-		"add": {
-			"type": "Number",
-			"default": 0
-		},
-		"remove": {
-			"type": "Number",
-			"default": 0
-		},
-		"edit": {
-			"type": "Number",
-			"default": 0
-		},
-		"destroy": {
-			"type": "Number",
-			"default": 0
-		},
+		"child":[
+			{
+				"group":{
+					"type": "String",
+					"lowercase": true
+				},
+				"model":{
+					"type": "String",
+					"lowercase": true
+				},
+				"create": {
+					"type": "String"
+				},
+				"delete": {
+					"type": "String"
+				},
+				"update": {
+					"type": "String"
+				},
+				"read": {
+					"type": "String"
+				}
+			}
+		],
 		"master": {
-			"type": "Number",
-			"default": 0
+			"type": "String"
 		},
 		"custom": {
 			"type": "Schema.Types.Mixed"
@@ -389,7 +557,7 @@ Schemas
 	    "model": {
 	      "title":"owner",
 	      "path":"owner",
-	      "master": 1
+	      "master": "true"
 	    },
 	    "query":{},
 	    "request":"create"
@@ -422,18 +590,17 @@ Schemas
 	    "model": {
 	      "title":"public",
 	      "path":"public",
-	      "read": 1	      
+	      "read": "true"	      
 	    },
 	    "query":{},
 	    "request":"create"
 		}
 	}
 ```
+[^](#collections)
 
 ##Loader
 * Used for projects
-
-
 ```json
 		"loader": {
 		"states": {
@@ -464,6 +631,9 @@ Schemas
 			"type": "Date",
 			"required": true
 		},
+		"end": {
+			"type": "Date"
+		},
 		"body":{
 				"type": "Schema.Types.Mixed"
 		},
@@ -492,10 +662,20 @@ Schemas
 			"lowercase": true,
 			"trim": true
 		},"geo": { 
-			"type": "[Number]", 
+			"type": "Schema.Types.Mixed", 
 			"index": "2dsphere",
-			 "sparse": true 
+			"sparse": true 
 		},
+		"media": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "media"
+				},
+				"group":"String",
+				"extra":"Schema.Types.Mixed"
+			}
+		],
 		"permission": [
 			{
 				"id": {
@@ -505,13 +685,15 @@ Schemas
 				"role": {
 					"type": "Schema.Types.ObjectId",
 					"ref": "role"
-				}
+				},
+				"extra":"Schema.Types.Mixed"
 			}
 		],
 		"tags":{"type":"[String]"}
 	}
 	
 ```
+[^](#collections)
 
 ##Level
 ```json
@@ -558,10 +740,9 @@ Schemas
 		]
 	}
 ```
-
+[^](#collections)
 
 #Grid 
-
 ```json
 	"grid": {
 		"states": {
@@ -607,6 +788,7 @@ Schemas
 		]
 	}
 ```
+[^](#collections)
 
 ##Blob
 ```json
@@ -626,6 +808,8 @@ Schemas
 		}
 	}
 ```
+[^](#collections)
+
 ##Event
 ```json
 	"event": {
@@ -681,6 +865,13 @@ Schemas
 			"type": "Schema.Types.ObjectId",
 			"ref": "event"
 		},
+		"media": {
+				"type": "Schema.Types.ObjectId",
+				"ref": "media"
+		},
+		"body": {
+			"type": "Schema.Types.Mixed"
+		}
 		"reciver": [
 			{"profile":{
 				"type": "Schema.Types.ObjectId",
@@ -694,12 +885,83 @@ Schemas
 		"done": {
 			"type": "Boolean",
 			"default": false
-		},
-		"data": {
-			"type": "Schema.Types.Mixed"
-		}
+		},	
 	}
 ```
+[^](#collections)
+
+##Event
+```json
+	"media":{
+   		"path": {
+			"type": "String",
+			"lowercase": true,
+			"trim": true
+		},
+		"title": {
+			"type": "String",
+			"default": ""
+		},
+		"ext": {
+			"type": "String",
+			"default": ""
+		},
+   		"filename": {
+			"type": "String",
+			"default": ""
+		},
+		"filesize": {
+			"type": "Number",
+			"default": 0
+		},
+		"url": {
+			"type": "String",
+			"default": ""
+		},
+		"body": {
+			"type": "Schema.Types.Mixed"
+		},
+		"states": {
+			"type": "Schema.Types.Mixed"
+		},
+    	"width": {
+			"type": "Number",
+			"default": 0
+		},
+		"height": {
+			"type": "Number",
+			"default": 0
+		},
+		"unit": {
+			"type": "String"
+		},
+		"group": {
+			"type": "String",
+			"default": "",
+			"lowercase": true,
+			"trim": true
+		},
+		"role":{
+			"type": "Schema.Types.ObjectId",
+			"ref": "role"
+		},
+    	"permission": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "profile"
+				},
+				"role": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "role"
+				},
+				"extra":"Schema.Types.Mixed"
+			}
+		],
+		"tags":{"type":"[String]"}
+	}
+```
+[^](#collections)
 
 ##Command
 ```json
@@ -749,6 +1011,7 @@ Schemas
 		}
 	}
 ```
+[^](#collections)
 
 ##Report 
 ```json
@@ -781,7 +1044,6 @@ Schemas
 		}
 	}
 ```
-
-
+[^](#collections)
 
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
