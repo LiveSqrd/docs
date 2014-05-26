@@ -1,3 +1,5 @@
+[<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
+
 #Basic Authentication
 
 logging in with email and password
