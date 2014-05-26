@@ -29,6 +29,7 @@ Is a regular post request with params:
 * gender (m/f/o, optional)
 * birthday (mm/dd/yy, optional)
 * app (true/false, default is false, optional)
+* ANY (any other param added will be saved in the client data object, that can be access later on)
 
 App param will return the object with instance, client, profile info instead of the index page. 
 
