@@ -28,7 +28,7 @@ Is a regular post request with params:
 * lastname (optional)
 * gender (m/f/o, optional)
 * birthday (mm/dd/yy, optional)
-* app (true/false, defualt is false, optional)
+* app (true/false, default is false, optional)
 
 App param will return the object with instance, client, profile info instead of the index page. 
 
