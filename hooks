@@ -1,7 +1,0 @@
-
-
-
-##pageData
-pageData( page, session, callback ,host)
-
-callback object holding the data for the page
