@@ -17,7 +17,7 @@ in config under api add
 ##End Points
 * /auth/register
 * /auth/login
-* /logmeout 
+* /auth/logout 
 
 
 ##Register
