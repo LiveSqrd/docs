@@ -80,45 +80,45 @@ Schema Modifiers:
 - modify (a function that the return will replace the value of that key)
 - default (will be placed in if key doesn't exisit)
 - String:
- - trim [true]
- - uppercase [true]
- - lowercase [true]
- - stripTags [true] (strip html or xml tags)
- - toType ["string"] will convert:
+ - trim -true-
+ - uppercase -true-
+ - lowercase -true-
+ - stripTags -true- (strip html or xml tags)
+ - toType -"string"- will convert:
   - Object/Array (json)
   - Number/Boolean (string)
   - Date (toJson string)
 - Boolean:
- - toType ["boolean"] (will convert "true" to true and "false" to false)
+ - toType -"boolean"- (will convert "true" to true and "false" to false)
 - Number:
- - toType ["float","int"] (will convert "12.3" to 12.3 and "12.3" to 12)
+ - toType -"float","int"- (will convert "12.3" to 12.3 and "12.3" to 12)
 - Object:
- - toType ["object"] (will convert from json to obj)
+ - toType -"object"- (will convert from json to obj)
 - Date:
- - toType ["date","string","number"] 
+ - toType -"date","string","number"- 
   - "date" (Date object)
   - "string" (to json)
   - "number" (unix timestamp)
 
 Schema Validators:
 ---
-- require [true]
+- require -true-
 - equals (will check for compare)
 - String:
--- min [number] (minime number of charactors)
--- max [number] (max number of charactors)
--- length [number] (exact number of charactors)
--- match [RegExp,string] (will check it that is a match in value)
+ - min -number- (minime number of charactors)
+ - max -number- (max number of charactors)
+ - length -number- (exact number of charactors)
+ - match -RegExp,string- (will check it that is a match in value)
 - Number
--- min [number]
--- max [number]
+ - min -number-
+ - max -number-
 - Array
--- min [number] (minime array size)
--- max [number] (max array size)
--- length [number] (exact length of array)
+ - min -number- (minime array size)
+ - max -number- (max array size)
+ - length -number- (exact length of array)
 - Date
--- min [date,string,number] (at least new)
--- max [date,string,number] (at max older)
+ - min -date,string,number- (at least new)
+ - max -date,string,number- (at max older)
 
 
 Sample Schema:
@@ -126,21 +126,21 @@ Sample Schema:
 ```js
 
 var schema = {
-   		 "hello":{"trim":true,"uppercase":true}
-   		,"body.name":{"match":"hel"}
-    	,"body.num":{"type":"number","toType":"int","min":25}
-   		,"body.json":{"type":"object","toType":"object"}
+         "hello":{"trim":true,"uppercase":true}
+        ,"body.name":{"match":"hel"}
+        ,"body.num":{"type":"number","toType":"int","min":25}
+        ,"body.json":{"type":"object","toType":"object"}
         ,"body.day":{"require":true}
   }
 var model = {
-   		 "hello":"jasd asd  asd  "
-     	,"body":{
-        	 "name":"hello"
-        	,"num":"30"
+         "hello":"jasd asd  asd  "
+        ,"body":{
+             "name":"hello"
+            ,"num":"30"
             ,"bday":"7/13/90"
             ,"json":"{\"me\":\"you\"}"
-         	,"arr":[0,1,2]
-     	}
+            ,"arr":[0,1,2]
+        }
 
 var validate = new db.validation(schema,model);
 if(!validate.error){
