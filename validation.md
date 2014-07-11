@@ -8,6 +8,7 @@ It is part of lsq object (Also called db).
 The class has 2 optional params:
 * schema (js object with defined rules and modifiers)
 * model (js object to validate against)
+* opttions (stop and strict)
 
 The class will return it self, to be able to access and rerun validation later.
 
@@ -53,6 +54,15 @@ example:
 }
 ```
 
+Options:
+---
+* stop |boolean| 
+ * true (defualt: it will stop checking as soon as one error)
+ * false (it will make object of errors fill up with array for each key with error)
+* strict |boolean|
+ * true (will populate an object result with just keys you set in schema)
+ * false (defualt: does't make result)
+
 Methods:
 ----
 * validate (it uses the model and schema properties)
@@ -64,6 +74,8 @@ Properties:
 * model (object to validate against)
 * error (false or a string)
 * originalModel (the unmodified model)
+* errors (object of errors fill up with array for each key with error stop:false)
+* result ( object with just keys you set in schema strict:true)
 
 Schema Types: (all lowercase)
 ---
