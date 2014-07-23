@@ -1,7 +1,7 @@
 Live Sqrd Docs
 ====
 
-Some usefull resources:
+Some useful resources:
 ---
 * [Create Project](https://github.com/LiveSqrd/docs/blob/master/createProject.md)
 * [Apis](https://github.com/LiveSqrd/docs/blob/master/API.md)
