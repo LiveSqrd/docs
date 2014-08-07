@@ -890,7 +890,7 @@ Schemas
 ```
 [^](#collections)
 
-##Event
+##Media
 ```json
 	"media":{
    		"path": {
