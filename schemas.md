@@ -857,7 +857,7 @@ Schemas
 		"body": {
 			"type": "Schema.Types.Mixed"
 		},
-		"output":{
+		"response":{
 			"type": "Schema.Types.Mixed"
 		},
 		"statusCode": {
