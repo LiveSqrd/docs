@@ -823,74 +823,88 @@ Schemas
 			"lowercase": true,
 			"trim": true
 		},
-		"action": {
+		"route": {
 			"type": "String",
 			"default": "",
-			"lowercase": true,
 			"trim": true
 		},
 		"path": {
 			"type": "String",
-			"lowercase": true,
-			"trim": true
+			"trim": true,
+			"unique":true,
+			"required":true
 		},
 		"date": {
-			"type": "Date"
+			"type": "Date",
+			"default": "Date.now"
 		},
-		"instance": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "instance"
+		"timeout":{
+			"type": "Number",
+			"default": 3000000
 		},
-		"client": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "client"
+		"stale":{
+			"type": "date"
 		},
-		"profile": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "profile"
+		"session":{
+			"type": "Schema.Types.Mixed"
 		},
-		"level": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "level"
+		"query": {
+			"type": "Schema.Types.Mixed"
 		},
-		"item": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "item"
-		},
-		"loader": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "loader"
-		},
-		"event": {
-			"type": "Schema.Types.ObjectId",
-			"ref": "event"
-		},
-		"media": {
-				"type": "Schema.Types.ObjectId",
-				"ref": "media"
+		"params": {
+			"type": "Schema.Types.Mixed"
 		},
 		"body": {
 			"type": "Schema.Types.Mixed"
-		}
-		"reciver": [
+		},
+		"output":{
+			"type": "Schema.Types.Mixed"
+		},
+		"statusCode": {
+			"type":"Number"
+		},
+		"receiver": [
 			{"profile":{
 				"type": "Schema.Types.ObjectId",
 				"ref": "profile"},
-			"seen":{"type": "Date"}
+				"seen":{"type": "Date"}
 			}
 		],
 		"message": {
 			"type": "String"
 		},
+		"starting": {
+			"type": "Date"
+		},
 		"done": {
-			"type": "Boolean",
-			"default": false
-		},	
+			"type": "Date"
+		},
+		"sender": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "profile"
+		},
+		"role":{
+			"type": "Schema.Types.ObjectId",
+			"ref": "role"
+		},
+		"permission": [
+			{
+				"id": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "profile"
+				},
+				"role": {
+					"type": "Schema.Types.ObjectId",
+					"ref": "role"
+				},
+				"extra":{"type":"Schema.Types.Mixed"}
+			}
+		]
 	}
 ```
 [^](#collections)
 
-##Event
+##Media
 ```json
 	"media":{
    		"path": {
