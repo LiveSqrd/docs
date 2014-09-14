@@ -36,6 +36,7 @@ App param will return the object with instance, client, profile info instead of 
 ##Login
 * login (The users email)
 * password (min 8 chars)
+* redirect (url,optional)
 * app (true/false, defualt is false, optional)
 
 
