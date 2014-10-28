@@ -1,6 +1,6 @@
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
 
-#PostMan setup 
+#[PostMan setup](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) 
 
 ###Url is your domain + "api/v1/" + schema
 
