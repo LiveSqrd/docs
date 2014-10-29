@@ -15,6 +15,8 @@
 * [command](#command)
 * [report](#report)
 
+**[custom](#custom)**
+
 [^](#collections)
 
 Schemas
@@ -1058,6 +1060,14 @@ Schemas
 		}
 	}
 ```
+
+
+##Custom
+You can access and modify your schemas using your api, by using the collection schemas "/api/v1/schemas"
+You will see all the schemas that are in here. Use these as guides plus the [mongoose](http://mongoosejs.com/docs/guide.html) documentation.
+When you add a key that will be your models name, and its object is the schema. 
+Once you restart your instance the new schemas will instantly take effect.
+
 [^](#collections)
 
 [<-](https://github.com/LiveSqrd/docs#some-usefull-resources)
