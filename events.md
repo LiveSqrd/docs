@@ -35,6 +35,7 @@ Event fields [schema](https://github.com/LiveSqrd/docs/blob/master/schemas.md#ev
 ---
 - route *the key for onEvent*
 - date *the date to be executed if you put current date it will be ran asap*
+- hostname *if you want to limit what servers it is run on based on hostname of app*
 - params *the same params as in [express](http://expressjs.com/api#req.params)*
 - query *the same query as in [express](http://expressjs.com/api#req.query)*
 - body *the same body as in [express](http://expressjs.com/api#req.body)*
@@ -42,17 +43,23 @@ Event fields [schema](https://github.com/LiveSqrd/docs/blob/master/schemas.md#ev
 - response *the response from the function*
 - statusCode *default is 200 but matches http statuscode for error checking*
 - timeout *default is 300000 "5 mins", the amount of time given to execute function*
-- starting *date that will be filled in once event has started to process*
+- started *date that will be filled in once event has started to process*
 - done *date that will be filled in once event has sent a response*
 - stale *date that executing the event is to late and to disreguard event*
 - receiver *if someone would be notified*
   - profile
   - seen
 - sender *who is to make the request*
+- progress *self implementation at the moment*
+		- total
+		- complete
+- retry *Number of retrys done - TBD* 
+- maxRetry *Number of retrys allowed before fail*
 - group 
 - states
 - role
 - permission
+
 
 
 Event defualt status codes
