@@ -227,21 +227,43 @@ Schemas
 
 ```json
 	"client": {
+		"title":{
+				"type": "String"
+			},
 		"states": {
 			"type": "Schema.Types.Mixed",
 			"hidden": true
 		},
+		"body": {
+			"type": "Schema.Types.Mixed"
+		},
 		"path": {
 			"type": "String",
-			"lowercase": true,
 			"trim": true,
-			"unique": true
+			"unique":true,
+			"required":true
 		},
 		"ip": 
 			{
 				"type": "[String]"
 			}
 		,
+		"device":[
+			{	
+				 "name": "String"
+				,"nick": "String" 
+				,"primary": { "type":"Boolean", "default": false}
+				,"id": "String"
+				,"data": {
+					"type": "Schema.Types.Mixed"
+				}
+				,"date": {
+					"type":"Date"
+					,"default": "Date.now"
+				}
+
+			}
+		],
 		"login": [
 			{
 				"name": {
@@ -252,6 +274,10 @@ Schemas
 				},
 				"data": {
 					"type": "Schema.Types.Mixed"
+				}
+				,"date": {
+					"type":"Date"
+					,"default": "Date.now"
 				}
 			}
 		],
@@ -277,7 +303,8 @@ Schemas
 			"type": "String"
 		},
 		"date": {
-			"type": "Date"
+			"type": "Date",
+			"default": "Date.now"
 		},
 
 		"lang": {
@@ -315,15 +342,21 @@ Schemas
 					"type": "Schema.Types.ObjectId",
 					"ref": "media"
 				},
+				"base":"String",
 				"group":"String",
-				"extra":"Schema.Types.Mixed"
+				"extra":{"type":"Schema.Types.Mixed"}
 			}
 		],
 		"event": 
 			{
 				"type": "[Schema.Types.ObjectId]",
 				"ref": "event"
-			}
+			},
+		"expire": {
+			"type": "Date",
+			"default": "Date.now",
+			"expires": "4d"
+		}
 	}
 ```
 * Example Usage
@@ -830,6 +863,19 @@ Schemas
 			"default": "",
 			"trim": true
 		},
+		"hostname":{
+			"type": "String",
+			"default": "",
+			"trim": true
+		},
+		"retry":{
+			"type": "Number",
+			"default": 0
+		},
+		"maxRetry":{
+			"type": "Number",
+			"default": 0
+		},
 		"path": {
 			"type": "String",
 			"trim": true,
@@ -845,7 +891,17 @@ Schemas
 			"default": 3000000
 		},
 		"stale":{
-			"type": "date"
+			"type": "Date"
+		},
+		"progress":{
+			"total":{
+				"type": "Number",
+				"default": 0
+			}
+			,"complete":{
+				"type": "Number",
+				"default": 0
+			}
 		},
 		"session":{
 			"type": "Schema.Types.Mixed"
@@ -875,7 +931,7 @@ Schemas
 		"message": {
 			"type": "String"
 		},
-		"starting": {
+		"started": {
 			"type": "Date"
 		},
 		"done": {
