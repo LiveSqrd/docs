@@ -18,6 +18,8 @@ in config under api add
 * /auth/register
 * /auth/login
 * /auth/logout 
+* /auth/password
+* /auth/forgot
 
 
 ##Register
@@ -39,5 +41,13 @@ App param will return the object with instance, client, profile info instead of 
 * redirect (url,optional)
 * app (true/false, defualt is false, optional)
 
+##Password
+Changed password must be logged in for it to work
+* password (old password)
+* newPassword (new password)
+
+##Forgot 
+Will send a email with a new password, both passwords will work till it is changed.
+* login (email address)
 
 
