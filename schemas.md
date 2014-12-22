@@ -508,7 +508,7 @@ Schemas
         "body":{
         	"firstname": "Mark",
         	"lastname": "Zuckerberg"
-    	}
+    	},
     	 "states":{
         	"rating": 20
     	}
