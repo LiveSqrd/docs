@@ -26,8 +26,8 @@ in config under api add
 Is a regular post request with params:
 * login (The users email)
 * password (min 8 chars)
-* firstname (optional)
-* lastname (optional)
+* firstName (optional)
+* lastName (optional)
 * gender (m/f/o, optional)
 * birthday (mm/dd/yy, optional)
 * app (true/false, default is false, optional)
