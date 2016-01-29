@@ -50,6 +50,7 @@ Is a regular post request with params:
 ###Possible errors:
 ```javascript
 {"errors":["emailLogin","noPass"]}
+{"errors":["shortPass"]}
 {"errors":["exists"]}
 {"errors":["already logged in"]}
 ```
