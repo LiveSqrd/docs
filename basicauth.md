@@ -47,7 +47,12 @@ Is a regular post request with params:
 	"phoneNumber": "888-999-0000" //optional ** any other field name with be added and accessable
 }
 ```
-
+###Possible errors:
+```javascript
+{"errors":["emailLogin","noPass"]}
+{"errors":["exists"]}
+{"errors":["already logged in"]}
+```
 App param will return the object with instance, client, profile info instead of the index page. 
 
 ##Login
